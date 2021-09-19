@@ -21,6 +21,22 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use('/admin/queues', router)
 
 // post from api
+
+// endpoint buat di panggin webhook getstream 
+// saat dapat => get location, di activity harus update TO:["location:everywhere","topic:doraemon", "topic:japan"]
+
+// NEGARA 
+// State Provinsi
+// City Kota/kab
+// Neighborhood Kec
+
+//  jika milihnya kota milihnya cuma kota, tapi kalau kecamatan munculin kec ddan kota
+// ex
+// Jkt barat => jkt barat
+
+// parmerah => parlemrah =jkt barat
+// array langsung lempar ke getstream
+
 app.post("/send-email", async (req, res) => {
     const { message, ...restBody } = req.body;
     await sendNewEmail({
